@@ -18,5 +18,6 @@ install:
   - pip install -r requirements.txt
 
 script:
+  - mkdir lasso_model/logs
   - python3 lasso_model/train_pipeline.py 
   - pytest 
