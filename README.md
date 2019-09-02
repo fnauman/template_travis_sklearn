@@ -18,12 +18,51 @@ Currently, this template includes:
  - Step 1: Set the PYTHONPATH so that it can search for this module:
  `export PYTHONPATH=$PYTHONPATH:/user/repos/template_travis_sklearn/`
  where `/user/repos/` is the folder where you cloned this repo.
+ `mkdir lasso_model/logs`
  - Step 2: Train the model by doing:
  `python template_travis_sklearn/lasso_model/train_pipeline.py`
  If this gives you an error, it is most likely because one or more of the packages are not installed since you did not follow step 0.
- - Step 3: Test the model works by doing: `pytest /user/repo/template_travis_sklearn`
+ - Step 3: Test the model works by doing: `pytest /user/repos/template_travis_sklearn`
 
 You can view the log files in `lasso_model/logs/` that end with `.log` extension with a date.
+
+## Directory structure
+Note that since logs is empty, git does not create this folder so you have to create it by `mkdir lasso_model/logs`.
+
+.
+├── lasso_model
+│   ├── config
+│   │   ├── config.py
+│   │   ├── __init__.py
+│   │   └── logging_config.py
+│   ├── datasets
+│   │   ├── __init__.py
+│   │   ├── test.csv
+│   │   └── train.csv
+│   ├── __init__.py
+│   ├── logs
+│   ├── make_n_predict.py
+│   ├── pipeline.py
+│   ├── predict.py
+│   ├── preprocessors.py
+│   ├── processing
+│   │   ├── data_management.py
+│   │   ├── errors.py
+│   │   ├── features.py
+│   │   ├── __init__.py
+│   │   ├── preprocessors.py
+│   │   └── validation.py
+│   ├── trained_models
+│   │   └── __init__.py
+│   ├── train_pipeline.py
+│   └── VERSION
+├── LICENSE
+├── README.md
+├── requirements.txt
+└── tests
+    ├── __init__.py
+    └── test_predict.py
+
  
 ## TODO
  - Documentation 
