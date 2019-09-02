@@ -4,6 +4,11 @@ import math
 from lasso_model.predict import make_prediction
 from lasso_model.processing.data_management import load_dataset
 
+#import logging
+from lasso_model.config.logging_config import get_logger
+
+_logger = get_logger(__name__)
+
 
 def test_make_single_prediction():
     # Given
@@ -17,3 +22,19 @@ def test_make_single_prediction():
     assert subject is not None
     assert isinstance(subject.get('predictions')[0], float)
     assert math.ceil(subject.get('predictions')[0]) == 26
+
+def test_make_multiple_predictions():
+    # Given
+    test_data = load_dataset(file_name='test.csv')
+    original_data_length = len(test_data)
+    multiple_test_json = test_data.to_json(orient='records')
+
+    # When
+    subject = make_prediction(input_data=multiple_test_json)
+
+    # Then
+    assert subject is not None 
+    assert len(subject.get('predictions')) == original_data_length
+
+    # We expect some rows to be filtered out
+    #assert len(subject.get('predictions')) != original_data_length

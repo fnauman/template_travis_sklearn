@@ -2,21 +2,24 @@ from sklearn.linear_model import Lasso
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
 
-from lasso_model import preprocessors as pp
+from lasso_model.processing import preprocessors as pp
+from lasso_model.processing import features
 
-DROP_FEATURES = ['ZN', 'INDUS', 'CHAS']
+from lasso_model.config import config
 
-# variables to log transform
-NUMERICALS_LOG_VARS = ['B']
+#import logging
+from lasso_model.config.logging_config import get_logger
 
-PIPELINE_NAME = 'lasso_regression'
+_logger = get_logger(__name__)
+#_logger = logging.getLogger(__name__)
+
 
 price_pipe = Pipeline(
     [
        ('log_transformer',
-            pp.LogTransformer(variables=NUMERICALS_LOG_VARS)),
+            features.LogTransformer(variables=config.NUMERICALS_LOG_VARS)),
         ('drop_features',
-            pp.DropFeatures(variables_to_drop=DROP_FEATURES)),
+            pp.DropFeatures(variables_to_drop=config.DROP_FEATURES)),
         ('scaler', MinMaxScaler()),
         ('Linear_model', Lasso(alpha=0.001, random_state=123))
     ]
