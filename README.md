@@ -19,7 +19,7 @@ Currently, this template includes:
  `export PYTHONPATH=$PYTHONPATH:/user/repos/template_travis_sklearn/`
  where `/user/repos/` is the folder where you cloned this repo.
  - Step 2: Train the model by doing:
- `python sec64/lasso_model/train_pipeline.py`
+ `python template_travis_sklearn/lasso_model/train_pipeline.py`
  If this gives you an error, it is most likely because one or more of the packages are not installed since you did not follow step 0.
  - Step 3: Test the model works by doing: `pytest /user/repo/template_travis_sklearn`
 
