@@ -28,7 +28,7 @@ You can view the log files in `lasso_model/logs/` that end with `.log` extension
 
 ## Directory structure
 Note that since logs is empty, git does not create this folder so you have to create it by `mkdir lasso_model/logs`.
-
+```
 .
 ├── lasso_model
 │   ├── config
@@ -62,7 +62,7 @@ Note that since logs is empty, git does not create this folder so you have to cr
 └── tests
     ├── __init__.py
     └── test_predict.py
-
+```
  
 ## TODO
  - Documentation 
