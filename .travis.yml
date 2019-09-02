@@ -18,4 +18,5 @@ install:
   - pip install -r requirements.txt
 
 script:
+  - python3 lasso_model/train_pipeline.py 
   - pytest 
