@@ -9,10 +9,9 @@ python:
   - 3.6
   - 3.7
 
-env:
-  global:
-    # package name for test invocation
-    - PACKAGENAME="lasso_model"
+before_install:
+  - "pip install -U pip"
+  - "export PYTHONPATH=$PYTHONPATH:$(pwd)"
 
 install:
   - pip install -r requirements.txt
